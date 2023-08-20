@@ -2,22 +2,28 @@ import { useState } from "react";
 import data from './data'
 
 const App = () => {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState(data);
 
-  return <section>
-    <main>
+  const deleteAll = () => {
+    setUsers([])
+  }
+  return <main>
+    <section className="container">
+      <h3>{ users.length >0 ?data.length :"0"} birthday's today</h3>
     {users.map(user => {
       return (
-        <article className="user">
+        <article className="person" key={user.id}>
           <img src={user.image} alt={user.name} />
           <div className="user-detail">
-            <h2>{user.name}</h2>
+            <h4>{user.name}</h4>
             <p>{user.age}</p>
           </div>
         </article>
       )
     })}
-      </main>
-  </section>
+      
+       <button className="btn" onClick={deleteAll}>remove all</button>
+      </section>
+  </main>
 };
 export default App;
