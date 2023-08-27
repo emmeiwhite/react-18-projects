@@ -1,6 +1,10 @@
 import React from "react";
+import { useState } from "react";
 
 const Tour = ({ image, id, name, price, info, handleDelete }) => {
+  const [isFull, setisFull] = useState(false);
+
+  const showFull = () => {};
   return (
     <article className="single-tour">
       <img
@@ -12,15 +16,26 @@ const Tour = ({ image, id, name, price, info, handleDelete }) => {
 
       <div className="tour-info">
         <h5>{name}</h5>
-        <p>{info}</p>
+        <p>
+          {isFull ? (
+            <div>
+              {info} <span>Show Less</span>{" "}
+            </div>
+          ) : (
+            <div>
+              {" "}
+              {info.substring(0, 200)}{" "}
+              <span onClick={showFull}> Show Full</span>
+            </div>
+          )}{" "}
+        </p>
+        <button
+          className="delete-btn btn btn-block"
+          onClick={() => handleDelete(id)}
+        >
+          delete
+        </button>
       </div>
-
-      <button
-        className="delete-btn btn"
-        onClick={() => handleDelete(id)}
-      >
-        delete
-      </button>
     </article>
   );
 };
