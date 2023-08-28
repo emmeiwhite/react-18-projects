@@ -1,4 +1,12 @@
+import Navbar from "./Navbar";
+
 const App = () => {
-  return <h2>Navbar Starter</h2>;
+  return (
+    <main>
+      <Navbar />
+
+      <h1>LIFE OF A SCIENTIST !</h1>
+    </main>
+  );
 };
 export default App;
