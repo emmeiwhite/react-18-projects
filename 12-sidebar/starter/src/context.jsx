@@ -2,7 +2,7 @@ import { createContext, useState, useContext } from "react";
 
 const AppContext = createContext();
 
-export default AppProvider = ({ children }) => {
+export const AppProvider = ({ children }) => {
   // Let's define all our state values and handlers
 
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
