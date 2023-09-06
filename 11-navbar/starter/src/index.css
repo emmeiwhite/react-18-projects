@@ -303,11 +303,15 @@ nav {
 /* --- That is why links container (a wrapper to links) is a good solution --- */
 
 .links-container {
-  height: 0;
+  /* height: 0; */
   overflow: hidden;
   transition: var(--transition);
 }
 
-.show-container {
-  height: 10rem; /* We are keeping a static value for now */
+/* .links {
+  height: 0;
 }
+
+.show-container {
+  height: 10rem; 
+} */
