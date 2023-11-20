@@ -43,6 +43,7 @@ export const AppProvider = ({ children }) => {
 };
 
 // Global custom hook : Now instead of using useContext() in the child components, we simply make use of useGlobalContext and destructure the values directly!
+
 export const useGlobalContext = () => {
   return useContext(AppContext);
 };
