@@ -50,7 +50,7 @@ html {
   --textColor: var(--grey-900);
   --borderRadius: 0.25rem;
   --letterSpacing: 1px;
-  --transition: 0.3s ease-in-out all;
+  --transition: all 0.3s ease-in-out;
   --max-width: 1120px;
   --fixed-width: 600px;
 
@@ -268,26 +268,25 @@ nav {
 .nav-toggle {
   font-size: 1.5rem;
   color: var(--primary-500);
-  border-color: transparent;
   background-color: transparent;
+  border: none;
   transition: var(--transition);
   cursor: pointer;
 }
 
 .nav-toggle:hover {
-  color: var(--primary-700);
   transform: rotate(90deg);
+  color: var(--primary-700);
 }
 
 .logo {
-  height: 40px;
+  height: 2.5rem;
 }
 
-/* Navlinks */
 .links a {
   color: var(--grey-700);
   font-size: 1rem;
-  text-transform: capitalize;
+  text-transform: uppercase;
   letter-spacing: var(--letterSpacing);
   display: block;
   padding: 0.5rem 1rem;
@@ -300,18 +299,15 @@ nav {
   padding-left: 1.5rem;
 }
 
-/* --- That is why links container (a wrapper to links) is a good solution --- */
-
+/* Height 160px --- this is to toggle the nav-container smoothly */
 .links-container {
-  /* height: 0; */
+  height: 0;
   overflow: hidden;
   transition: var(--transition);
 }
 
-/* .links {
-  height: 0;
+.links-container.show {
+  /* height: 160px;
+     This was the static approach, Now let's do the dynamic approach! 
+  */
 }
-
-.show-container {
-  height: 10rem; 
-} */

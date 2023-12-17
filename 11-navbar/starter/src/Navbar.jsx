@@ -1,31 +1,22 @@
-import React from "react";
-import { useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import logo from "./logo.svg";
+import { social, links } from "./data.jsx";
 import { FaBars } from "react-icons/fa";
-import { links, social } from "./data";
+
 export default function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
-  const linksContainerRef = useRef(null);
-  const linksRef = useRef(null);
+  const refLinks = useRef(null);
+  const refLinksContainer = useRef(null);
+  console.log(refLinks.current);
 
   const handleToggle = () => {
-    console.log("button clicked!");
-    // const linksContainer = document.querySelector(".links-container");
-    // linksContainer.classList.toggle("show-links");
     setShowLinks(!showLinks);
-
-    console.log(linksContainerRef.current.getBoundingClientRect().height);
-    console.log(linksRef.current.getBoundingClientRect().height);
   };
 
-  const styles = {
-    height: showLinks
-      ? `${linksRef.current.getBoundingClientRect().height}px`
-      : `0px`,
-  };
   return (
     <nav>
       <div className="nav-center">
+        {/* NavHeader */}
         <div className="nav-header">
           <img
             src={logo}
@@ -40,43 +31,27 @@ export default function Navbar() {
             <FaBars />
           </button>
         </div>
-      </div>
 
-      {/* {showLinks && ( */}
-      {/* <div className={`links-container ${showLinks ? "show-container" : ""}`}>
-        <ul className="links">
-          {links.map((link) => {
-            const { id, url, text } = link;
-            return (
-              <li key={id}>
-                <a href={url}>{text}</a>
-              </li>
-            );
-          })}
-        </ul>
-      </div> */}
-      {/* )} */}
+        {/* NavContainer */}
 
-      {/* Now with useRef Logic */}
-
-      <div
-        className={"links-container"}
-        style={styles}
-        ref={linksContainerRef}
-      >
-        <ul
-          className="links"
-          ref={linksRef}
+        <div
+          className={showLinks ? "links-container show" : "links-container"}
+          ref={refLinksContainer}
         >
-          {links.map((link) => {
-            const { id, url, text } = link;
-            return (
-              <li key={id}>
-                <a href={url}>{text}</a>
-              </li>
-            );
-          })}
-        </ul>
+          <ul
+            className="links"
+            ref={refLinks}
+          >
+            {links.map((link) => {
+              const { id, url, text } = link;
+              return (
+                <li key={id}>
+                  <a href={url}>{text}</a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
       </div>
     </nav>
   );
