@@ -24,8 +24,8 @@ export default function Shades({ colors }) {
     <section
       style={{
         height: "500px",
-        display: "flex",
-        flexWrap: "wrap",
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
       }}
     >
       {/* Render the shades */}
