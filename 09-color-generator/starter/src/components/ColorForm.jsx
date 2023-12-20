@@ -8,22 +8,33 @@ export default function ColorForm({ getColor }) {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={color}
-        onChange={(e) => setColor(e.target.value)}
-        placeholder="#7865ab"
-      />
-      <button
-        type="submit"
-        className="btn"
-        style={{
-          backgroundColor: color,
-        }}
+    <section className="container">
+      <h4>Color Generator</h4>
+      <form
+        onSubmit={handleSubmit}
+        className="color-form"
       >
-        Submit
-      </button>
-    </form>
+        <input
+          type="color"
+          onChange={(e) => setColor(e.target.value)}
+          value={color}
+        />
+        <input
+          type="text"
+          value={color}
+          onChange={(e) => setColor(e.target.value)}
+          placeholder="#7865ab"
+        />
+        <button
+          type="submit"
+          className="btn"
+          style={{
+            backgroundColor: color,
+          }}
+        >
+          Submit
+        </button>
+      </form>
+    </section>
   );
 }

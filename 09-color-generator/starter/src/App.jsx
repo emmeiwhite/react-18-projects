@@ -11,7 +11,6 @@ const App = () => {
 
   return (
     <section>
-      <h2>Color Generator Project</h2>
       <ColorForm getColor={getColor} />
       <Shades selectedColor={selectedColor} />
     </section>
