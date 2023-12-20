@@ -1,6 +1,6 @@
 import React from "react";
 // import { transparentize, parseToRgb } from "polished";
-import Values from "values.js";
+
 import SingleColor from "./SingleColor";
 
 // Utility function to convert hex to rgba
@@ -9,8 +9,8 @@ import SingleColor from "./SingleColor";
 //   return `rgba(${red}, ${green}, ${blue}, ${alpha})`;
 // };
 
-export default function Shades({ selectedColor }) {
-  if (!selectedColor) return;
+export default function Shades({ colors }) {
+  if (!colors.length > 0) return;
   // Convert the selected color to rgba format
   // const rgbaColor = hexToRgba(selectedColor, 1);
 
@@ -20,8 +20,6 @@ export default function Shades({ selectedColor }) {
   //   color: transparentize(index / 10, rgbaColor), // Adjust transparency for shades
   // }));
 
-  const shades = new Values(selectedColor).all(10);
-  console.log(shades);
   return (
     <section
       style={{
@@ -31,7 +29,7 @@ export default function Shades({ selectedColor }) {
       }}
     >
       {/* Render the shades */}
-      {shades.map((shade, index) => (
+      {colors.map((shade, index) => (
         <SingleColor
           shade={shade}
           index={index}

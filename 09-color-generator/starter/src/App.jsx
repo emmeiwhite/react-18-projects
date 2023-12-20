@@ -1,18 +1,31 @@
 import { useState } from "react";
 import ColorForm from "./components/ColorForm";
 import Shades from "./components/Shades";
-useState;
+import Values from "values.js";
+import { ToastContainer, toast } from "react-toastify";
 
 const App = () => {
-  const [selectedColor, setSelectedColor] = useState("");
+  const [colors, setColors] = useState(new Values("#24ab23").all(10));
+
   const getColor = (color) => {
-    setSelectedColor(color);
+    try {
+      const newColors = new Values(color).all(10);
+      setColors(newColors);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
+
+  /*
+  toast.success("success!");
+  toast.error("error!");
+  */
 
   return (
     <section>
       <ColorForm getColor={getColor} />
-      <Shades selectedColor={selectedColor} />
+      <Shades colors={colors} />
+      <ToastContainer position="top-center" />
     </section>
   );
 };
