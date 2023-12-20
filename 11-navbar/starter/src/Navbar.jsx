@@ -6,11 +6,19 @@ import { FaBars } from "react-icons/fa";
 export default function Navbar() {
   const [showLinks, setShowLinks] = useState(false);
   const refLinks = useRef(null);
-  const refLinksContainer = useRef(null);
+  // const refLinksContainer = useRef(null);
   console.log(refLinks.current);
 
   const handleToggle = () => {
+    console.log(social);
     setShowLinks(!showLinks);
+  };
+
+  // We are handling the toggle of nav's with inline style  and useRef
+  const linksStyle = {
+    height: showLinks
+      ? `${refLinks.current.getBoundingClientRect().height}px`
+      : "0px",
   };
 
   return (
@@ -35,8 +43,9 @@ export default function Navbar() {
         {/* NavContainer */}
 
         <div
-          className={showLinks ? "links-container show" : "links-container"}
-          ref={refLinksContainer}
+          className="links-container"
+          // ref={refLinksContainer}
+          style={linksStyle}
         >
           <ul
             className="links"
@@ -52,6 +61,19 @@ export default function Navbar() {
             })}
           </ul>
         </div>
+
+        {/* Social links */}
+
+        <ul className="social-icons">
+          {social.map((socialLink) => {
+            console.log(socialLink);
+            return (
+              <li key={socialLink.id}>
+                <a href={socialLink.url}>{socialLink.icon}</a>
+              </li>
+            );
+          })}
+        </ul>
       </div>
     </nav>
   );
