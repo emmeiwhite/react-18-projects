@@ -1,7 +1,9 @@
 import Duties from "./Duties";
 
-export default function JobInfo({ jobs }) {
-  const { company, dates, duties, title, id } = jobs[0];
+export default function JobInfo({ jobs, currentJobId }) {
+  const currentIndex = jobs.findIndex((job) => job.id === currentJobId);
+  console.log(currentIndex);
+  const { company, dates, duties, title, id } = jobs[currentIndex];
 
   return (
     <article className="job-info">

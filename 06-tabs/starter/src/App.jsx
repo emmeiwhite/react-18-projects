@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import JobInfo from "./components/JobInfo";
 import Loader from "./components/Loader";
+import SideBar from "./components/SideBar";
 
 const url = "https://www.course-api.com/react-tabs-project";
 
@@ -9,6 +10,14 @@ const App = () => {
   const [jobs, setJobs] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+
+  const [currentJobId, setCurrentJobId] = useState("");
+
+  function handleCurrentJob(id) {
+    console.log("Current Button id is:");
+    console.log(id);
+    setCurrentJobId(id);
+  }
 
   async function fetchJobs() {
     try {
@@ -37,7 +46,14 @@ const App = () => {
   return (
     <section className="jobs-center">
       {/* 1. Sidebar button */}
-      <JobInfo jobs={jobs} />
+      <SideBar
+        jobs={jobs}
+        handleCurrentJob={handleCurrentJob}
+      />
+      <JobInfo
+        jobs={jobs}
+        currentJobId={currentJobId}
+      />
     </section>
   );
 };
